@@ -28,7 +28,9 @@ public class Space : MonoBehaviour, IPointerClickHandler
     // Function that gets called when this space is clicked
     public void OnPointerClick(PointerEventData pointerEventData)
     {
-        if (!gm.gameOver)
+        string currentSpace = gm.GetGameBoardSpace(row, column);
+
+        if (!gm.gameOver && currentSpace == "-")
         {
             // X's turn
             if (gm.playerTurn == 1)
@@ -36,7 +38,7 @@ public class Space : MonoBehaviour, IPointerClickHandler
                 spaceImage.color = fullColor;
                 spaceImage.sprite = gm.GetSprite(GameManager.SpriteType.X);
                 gm.playerTurn = 2;
-                gm.SetGameBoard(row, column, "X");
+                gm.SetGameBoardSpace(row, column, "X");
             }
             // O's turn
             else
@@ -44,7 +46,7 @@ public class Space : MonoBehaviour, IPointerClickHandler
                 spaceImage.color = fullColor;
                 spaceImage.sprite = gm.GetSprite(GameManager.SpriteType.O);
                 gm.playerTurn = 1;
-                gm.SetGameBoard(row, column, "O");
+                gm.SetGameBoardSpace(row, column, "O");
             }
         }
     }

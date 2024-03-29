@@ -83,9 +83,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SetGameBoard(int row, int column, string symbol)
+    public void SetGameBoardSpace(int row, int column, string symbol)
     {
         gameBoard[row, column] = symbol;
+    }
+
+    public string GetGameBoardSpace(int row, int column)
+    {
+        return gameBoard[row, column];
     }
 
     public Sprite GetSprite(SpriteType spriteType)
